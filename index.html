@@ -16,19 +16,18 @@
       <span class="brand-name">Kingdom</span>
     </header>
 
-    <h1 class="hero-title">Search-first models for real projects.</h1>
-    <p class="hero-copy">Type a query and jump straight into production-style demos.</p>
+    <h1 class="hero-title">kingdom-origin-domain</h1>
+    <p class="hero-copy">Your search index for world simulations.</p>
 
     <form id="searchForm" class="search-form">
-      <input id="searchInput" class="search-input" type="text" placeholder='Try: "Website model for Joe"' autocomplete="off" />
+      <input id="searchInput" class="search-input" type="text" placeholder="Type your key" autocomplete="off" />
       <button class="search-button" type="submit">Search</button>
     </form>
 
     <p id="feedback" class="feedback" aria-live="polite"></p>
 
     <div class="quick-actions">
-      <button type="button" class="quick-chip" data-query="Website model for Joe">Website model for Joe</button>
-      <button type="button" class="quick-chip" data-query="Landing page for restaurant">Landing page for restaurant</button>
+      <button type="button" class="quick-chip" data-query="Verse Calculator">Verse Calculator</button>
     </div>
   </main>
 
@@ -38,18 +37,29 @@
       var input = document.getElementById("searchInput");
       var feedback = document.getElementById("feedback");
       var chips = document.querySelectorAll(".quick-chip");
+      var joeKey = "koVLi:8889:Joe:Bravo:America";
 
       function runSearch(query) {
-        var normalized = query.trim().toLowerCase();
-        if (!normalized) {
+        var trimmed = query.trim();
+        var normalized = trimmed.toLowerCase();
+        if (!trimmed) {
           feedback.textContent = "Enter a search query.";
           return;
         }
-        if (normalized === "website model for joe") {
+        if (
+          trimmed === joeKey ||
+          normalized === "joe" ||
+          normalized === "model for joe" ||
+          normalized === "website model for joe"
+        ) {
           window.location.href = "meal-joe.html";
           return;
         }
-        feedback.textContent = "No exact model yet. Try: Website model for Joe";
+        if (normalized === "verse calculator" || normalized === "luke 17:21" || normalized === "luke 17 21") {
+          window.location.href = "luke-17-21.html";
+          return;
+        }
+        feedback.textContent = "No match. Use your key.";
       }
 
       form.addEventListener("submit", function (event) {

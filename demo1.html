@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo1 | Kingdom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-demo1">
+  <main class="demo1-shell">
+    <nav class="demo1-nav">
+      <a class="back-link" href="meal-joe.html">Back to Joe Models</a>
+      <span class="demo1-brand">Demo1</span>
+    </nav>
+
+    <section class="demo1-hero">
+      <p class="demo1-eyebrow">Adaptive Demo World</p>
+      <h1 class="demo1-title">Demo1 Strategic Control Surface</h1>
+      <p class="demo1-copy">A high-level system view where experience, data integrity, and expansion are intentionally separated. Teams can publish confidently, add new objects safely, and scale without redesign.</p>
+      <div class="demo1-cta-row">
+        <a class="demo1-btn demo1-btn-primary" href="#">Open Experience</a>
+        <a class="demo1-btn demo1-btn-secondary" href="#">View Architecture</a>
+      </div>
+    </section>
+
+    <section class="demo1-status">
+      <article class="demo1-status-card">
+        <p class="demo1-status-label">Data Integrity</p>
+        <p class="demo1-status-value">Immutable</p>
+      </article>
+      <article class="demo1-status-card">
+        <p class="demo1-status-label">Growth Mode</p>
+        <p class="demo1-status-value">Append-Only</p>
+      </article>
+      <article class="demo1-status-card">
+        <p class="demo1-status-label">Render Engine</p>
+        <p class="demo1-status-value">Index Derived</p>
+      </article>
+      <article class="demo1-status-card">
+        <p class="demo1-status-label">Scale Target</p>
+        <p class="demo1-status-value">1 → Millions</p>
+      </article>
+    </section>
+
+    <section class="demo1-reviews">
+      <div class="demo1-review-grid" id="reviewGrid"></div>
+      <div class="demo1-review-controls">
+        <button class="demo1-btn demo1-btn-secondary" id="prevReview" type="button">Previous</button>
+        <button class="demo1-btn demo1-btn-primary" id="nextReview" type="button">Next</button>
+      </div>
+    </section>
+
+    <section class="demo1-flow">
+      <h2 class="demo1-flow-title">Operational Flow</h2>
+      <div class="demo1-flow-row">
+        <article class="demo1-flow-step"><p>1. Add Data Object</p></article>
+        <article class="demo1-flow-step"><p>2. Transform to Node</p></article>
+        <article class="demo1-flow-step"><p>3. Auto-Index Render</p></article>
+        <article class="demo1-flow-step"><p>4. Publish Safe View</p></article>
+      </div>
+    </section>
+  </main>
+  <script>
+    (function () {
+      var reviews = [
+        { title: "Separation of Concerns", body: "Public-facing presentation and private data operations remain isolated by design." },
+        { title: "Composable Structures", body: "Segments and nodes can be introduced at any point without reworking core layout." },
+        { title: "Immutable History", body: "Operational changes are represented as new nodes, preserving prior states permanently." },
+        { title: "Operational Clarity", body: "Decision-ready summaries keep complexity manageable as object count expands." },
+        { title: "Traversal Independence", body: "Chronological, hierarchical, and relational views remain independent from storage order." },
+        { title: "Resilient Expansion", body: "New capabilities are added through extension, not fragile rewrites." }
+      ];
+
+      var index = 0;
+      var reviewGrid = document.getElementById("reviewGrid");
+      var prev = document.getElementById("prevReview");
+      var next = document.getElementById("nextReview");
+
+      function cardsPerView() {
+        if (window.matchMedia("(max-width: 640px)").matches) return 1;
+        if (window.matchMedia("(max-width: 980px)").matches) return 2;
+        return 3;
+      }
+
+      function renderReview() {
+        var perView = cardsPerView();
+        var html = "";
+        for (var i = 0; i < perView; i += 1) {
+          var idx = (index + i) % reviews.length;
+          var current = reviews[idx];
+          html +=
+            '<article class="demo1-card demo1-review-card">' +
+              '<p class="demo1-card-meta">Real Comment ' + (idx + 1) + "/" + reviews.length + "</p>" +
+              "<h2>" + current.title + "</h2>" +
+              "<p>" + current.body + "</p>" +
+            "</article>";
+        }
+        reviewGrid.innerHTML = html;
+      }
+
+      prev.addEventListener("click", function () {
+        index = (index - 1 + reviews.length) % reviews.length;
+        renderReview();
+      });
+
+      next.addEventListener("click", function () {
+        index = (index + 1) % reviews.length;
+        renderReview();
+      });
+
+      window.addEventListener("resize", renderReview);
+
+      renderReview();
+    })();
+  </script>
+</body>
+</html>
