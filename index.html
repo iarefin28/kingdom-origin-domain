@@ -3,13 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kingdom-origin-domain</title>
+  <title>Kingdom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <main class="container">
-    <h1>kingdom-origin-domain</h1>
-    <p>Your project is set up and ready for its first commit.</p>
+<body class="page-home">
+  <main class="home-shell">
+    <header class="brand-row">
+      <span class="brand-mark">K</span>
+      <span class="brand-name">Kingdom</span>
+    </header>
+
+    <h1 class="hero-title">Search-first models for real projects.</h1>
+    <p class="hero-copy">Type a query and jump straight into production-style demos.</p>
+
+    <form id="searchForm" class="search-form">
+      <input id="searchInput" class="search-input" type="text" placeholder='Try: "Website model for Joe"' autocomplete="off" />
+      <button class="search-button" type="submit">Search</button>
+    </form>
+
+    <p id="feedback" class="feedback" aria-live="polite"></p>
+
+    <div class="quick-actions">
+      <button type="button" class="quick-chip" data-query="Website model for Joe">Website model for Joe</button>
+      <button type="button" class="quick-chip" data-query="Landing page for restaurant">Landing page for restaurant</button>
+    </div>
   </main>
+
+  <script>
+    (function () {
+      var form = document.getElementById("searchForm");
+      var input = document.getElementById("searchInput");
+      var feedback = document.getElementById("feedback");
+      var chips = document.querySelectorAll(".quick-chip");
+
+      function runSearch(query) {
+        var normalized = query.trim().toLowerCase();
+        if (!normalized) {
+          feedback.textContent = "Enter a search query.";
+          return;
+        }
+        if (normalized === "website model for joe") {
+          window.location.href = "meal-joe.html";
+          return;
+        }
+        feedback.textContent = "No exact model yet. Try: Website model for Joe";
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        runSearch(input.value);
+      });
+
+      chips.forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          var query = chip.getAttribute("data-query") || "";
+          input.value = query;
+          runSearch(query);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
