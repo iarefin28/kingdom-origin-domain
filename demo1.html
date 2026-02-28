@@ -11,10 +11,13 @@
 </head>
 <body class="page-demo1">
   <main class="demo1-shell">
-    <nav class="demo1-nav">
-      <a class="back-link" href="meal-joe.html">Back to Joe Models</a>
-      <span class="demo1-brand">Demo1</span>
-    </nav>
+    <header class="demo1-header">
+      <p class="demo1-header-kicker">Kingdom World</p>
+      <nav class="demo1-nav">
+        <a class="back-link" href="meal-joe.html">Back to Joe Models</a>
+        <span class="demo1-brand">Demo1</span>
+      </nav>
+    </header>
 
     <section class="demo1-hero">
       <p class="demo1-eyebrow">Adaptive Demo World</p>
@@ -56,22 +59,58 @@
     <section class="demo1-flow">
       <h2 class="demo1-flow-title">Operational Flow</h2>
       <div class="demo1-flow-row">
-        <article class="demo1-flow-step"><p>1. Add Data Object</p></article>
-        <article class="demo1-flow-step"><p>2. Transform to Node</p></article>
-        <article class="demo1-flow-step"><p>3. Auto-Index Render</p></article>
-        <article class="demo1-flow-step"><p>4. Publish Safe View</p></article>
+        <article class="demo1-flow-step">
+          <div class="demo1-flow-photo" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80')"></div>
+          <p>1. Add Data Object</p>
+        </article>
+        <article class="demo1-flow-step">
+          <div class="demo1-flow-photo" style="background-image:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80')"></div>
+          <p>2. Transform to Node</p>
+        </article>
+        <article class="demo1-flow-step">
+          <div class="demo1-flow-photo" style="background-image:url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80')"></div>
+          <p>3. Auto-Index Render</p>
+        </article>
+        <article class="demo1-flow-step">
+          <div class="demo1-flow-photo" style="background-image:url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1200&q=80')"></div>
+          <p>4. Publish Safe View</p>
+        </article>
       </div>
     </section>
   </main>
   <script>
     (function () {
       var reviews = [
-        { title: "Separation of Concerns", body: "Public-facing presentation and private data operations remain isolated by design." },
-        { title: "Composable Structures", body: "Segments and nodes can be introduced at any point without reworking core layout." },
-        { title: "Immutable History", body: "Operational changes are represented as new nodes, preserving prior states permanently." },
-        { title: "Operational Clarity", body: "Decision-ready summaries keep complexity manageable as object count expands." },
-        { title: "Traversal Independence", body: "Chronological, hierarchical, and relational views remain independent from storage order." },
-        { title: "Resilient Expansion", body: "New capabilities are added through extension, not fragile rewrites." }
+        {
+          title: "Separation of Concerns",
+          body: "Public-facing presentation and private data operations remain isolated by design.",
+          image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+        },
+        {
+          title: "Composable Structures",
+          body: "Segments and nodes can be introduced at any point without reworking core layout.",
+          image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80"
+        },
+        {
+          title: "Immutable History",
+          body: "Operational changes are represented as new nodes, preserving prior states permanently.",
+          image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=80"
+        },
+        {
+          title: "Operational Clarity",
+          body: "Decision-ready summaries keep complexity manageable as object count expands.",
+          image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=1200&q=80"
+        },
+        {
+          title: "Traversal Independence",
+          body: "Chronological, hierarchical, and relational views remain independent from storage order.",
+          image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80"
+        },
+        {
+          title: "Resilient Expansion",
+          body: "New capabilities are added through extension, not fragile rewrites.",
+          image: "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&q=80"
+        }
       ];
 
       var index = 0;
@@ -93,6 +132,7 @@
           var current = reviews[idx];
           html +=
             '<article class="demo1-card demo1-review-card">' +
+              '<div class="demo1-review-photo" style="background-image:url(\'' + current.image + '\')"></div>' +
               '<p class="demo1-card-meta">Real Comment ' + (idx + 1) + "/" + reviews.length + "</p>" +
               "<h2>" + current.title + "</h2>" +
               "<p>" + current.body + "</p>" +
